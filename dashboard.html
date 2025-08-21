@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Administrasi Perum</title>
+</head>
+
+<body class="flex bg-gray-100 font-sans antialiased">
+
+    <div id="sidebar"
+        class="bg-gradient-to-b from-green-50 to-emerald-100 text-gray-800 w-64 h-screen flex flex-col shadow-lg fixed inset-y-0 left-0 transform -translate-x-full md:translate-x-0 md:relative transition duration-200 ease-in-out">
+
+        <!-- Header -->
+        <div class="flex items-center px-4 py-5 border-b border-green-200">
+            <div class="bg-white p-1 rounded-full shadow-sm mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h6m8-11v10a1 1 0 01-1 1h-6" />
+                </svg>
+                <!-- <img src="https://via.placeholder.com/40" alt="Logo Perusahaan" class="w-8 h-8 rounded-full"> -->
+            </div>
+            <h1 class="text-xl font-bold text-green-800">Administrasi Perum</h1>
+        </div>
+
+        <!-- Menu -->
+        <nav class="mt-6 flex-1 space-y-2">
+            <!-- Menu Dashboard (Aktif) -->
+            <a href="#" class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 
+       bg-green-500 text-white font-semibold
+       hover:bg-green-600 hover:text-white transition group">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l9-9 9 9v9a2 2 0 01-2 2H5a2 2 0 01-2-2v-9z"></path>
+                </svg>
+                <span class="font-medium">Dashboard</span>
+            </a>
+
+            <a href="#" class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 
+       text-gray-700 hover:bg-green-200 hover:text-green-700 transition group">
+                <svg class="w-5 h-5 text-green-600 group-hover:text-green-700" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2a3 3 0 01-3-2c0-1.105 1.343-2 3-2zM12 8V7a2 2 0 012-2h4a2 2 0 012 2v10a2 2 0 01-2 2H8a2 2 0 01-2-2v-3.5">
+                    </path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v-2m-2 0h-2"></path>
+                </svg>
+                <span class="font-medium">Penjualan</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 text-gray-700 hover:bg-green-200 hover:text-green-700 transition group">
+                <svg class="w-5 h-5 text-green-600 group-hover:text-green-700" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 9v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9a2 2 0 012-2h6a2 2 0 012 2z"></path>
+                </svg>
+                <span class="font-medium">Pengeluaran</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 text-gray-700 hover:bg-green-200 hover:text-green-700 transition group">
+                <svg class="w-5 h-5 text-green-600 group-hover:text-green-700" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                    </path>
+                </svg>
+                <span class="font-medium">Laporan</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 text-gray-700 hover:bg-green-200 hover:text-green-700 transition group">
+                <svg class="w-5 h-5 text-green-600 group-hover:text-green-700" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                    </path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                <span class="font-medium">Pengaturan</span>
+            </a>
+        </nav>
+
+
+        <!-- Footer -->
+        <div class="p-4 border-t border-green-200">
+            <a href="">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-green-100 p-2 rounded-full">
+                        <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                            </path>
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium text-green-700">Logout</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="flex-1 lg:px-4 lg:py-4">
+        <div class="bg-white shadow p-4 md:p-6 rounded-lg flex justify-between items-center">
+            <button id="hamburger" class="md:hidden">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+            <h2 class="text-xl font-semibold flex-1 text-center md:text-left ml-4 mr-4 md:ml-0">Dashboard</h2>
+            <div class="relative">
+                <button id="profileButton" class="flex items-center focus:outline-none">
+                    <svg class="w-8 h-8 text-green-600 rounded-full border-2 border-green-300 bg-green-50"
+                        fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 4a4 4 0 100 8 4 4 0 000-8zM12 14c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z" />
+                    </svg>
+                </button>
+                <div id="dropdown"
+                    class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg hidden z-10">
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="w-8 h-8 text-gray-700 mr-2" fill="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 4a4 4 0 100 8 4 4 0 000-8zM12 14c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z" />
+                            </svg>
+                            <div>
+                                <p class="font-semibold">Nama Pengguna</p>
+                                <p class="text-sm text-gray-500">Admin</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200"></div>
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profil</a>
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Pengaturan</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 p-4 md:p-6">
+            <h3 class="text-lg md:text-2xl font-semibold text-gray-800">Selamat datang di Dashboard, Admin!</h3>
+            <div class="bg-white p-6 mt-4 rounded-lg shadow-md">
+                <p>Isi dashboard Anda di sini.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dropdown Profil
+        const profileButton = document.getElementById('profileButton');
+        const dropdown = document.getElementById('dropdown');
+
+        profileButton.addEventListener('click', () => {
+            dropdown.classList.toggle('hidden');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!profileButton.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        // Sidebar Responsive untuk Mobile
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+        });
+    </script>
+</body>
+
+</html>
