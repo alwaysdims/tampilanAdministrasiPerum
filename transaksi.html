@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Administrasi Perum</title>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 24px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans antialiased">
+
+    <div id="sidebar"
+        class="bg-gradient-to-b from-green-50 to-emerald-100 text-gray-800 w-64 fixed top-0 left-0 h-screen flex flex-col shadow-lg transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0 z-50">
+
+        <div class="flex items-center px-4 py-5 border-b border-green-200">
+            <div class="bg-white p-1 rounded-full shadow-sm mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h6m8-11v10a1 1 0 01-1 1h-6" />
+                </svg>
+            </div>
+            <h1 class="text-xl font-bold text-green-800">Administrasi Perum</h1>
+        </div>
+
+        <nav class="mt-6 flex-1 space-y-2 overflow-y-auto">
+            <a href="dashboard.html"
+                class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 text-gray-700 hover:bg-green-200 hover:text-green-700 transition group">
+                <svg class="w-5 h-5 text-green-600 group-hover:text-green-700" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l9-9 9 9v9a2 2 0 01-2 2H5a2 2 0 01-2-2v-9z"></path>
+                </svg>
+                <span class="font-medium">Dashboard</span>
+            </a>
+
+            <a href="penjualan.html"
+                class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 bg-green-500 text-white font-semibold hover:bg-green-600 transition group">
+                <svg class="w-5 h-5 text-white group-hover:text-white" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2a3 3 0 01-3-2c0-1.105 1.343-2 3-2zM12 8V7a2 2 0 012-2h4a2 2 0 012 2v10a2 2 0 01-2 2H8a2 2 0 01-2-2v-3.5">
+                    </path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v-2m-2 0h-2">
+                    </path>
+                </svg>
+                <span class="font-medium">Penjualan</span>
+            </a>
+
+            <!-- <a href="pengeluaran.html"
+                class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 text-gray-700 hover:bg-green-200 hover:text-green-700 transition group">
+                <svg class="w-5 h-5 text-red-600 group-hover:text-red-700" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span class="font-medium">Pengeluaran</span>
+            </a> -->
+
+            <a href="laporan.html"
+                class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 text-gray-700 hover:bg-green-200 hover:text-green-700 transition group">
+                <svg class="w-5 h-5 text-green-600 group-hover:text-green-700" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                    </path>
+                </svg>
+                <span class="font-medium">Laporan</span>
+            </a>
+
+        </nav>
+
+        <div class="p-4 border-t border-green-200">
+            <a href="#">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-green-100 p-2 rounded-full">
+                        <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                            </path>
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium text-green-700">Logout</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div id="backdrop"
+        class="fixed inset-0 bg-black opacity-0 transition-opacity duration-300 ease-in-out z-40 md:hidden pointer-events-none">
+    </div>
+
+    <div class="flex-1 md:ml-64 transition-all duration-300 ease-in-out">
+        <div
+            class="bg-white shadow-md p-4 md:p-6 flex justify-between items-center sticky top-0 z-40 rounded-xl m-4 md:m-6">
+            <button id="hamburger" class="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+            <h2 class="text-xl font-semibold flex-1 text-center md:text-left text-gray-800">Transaksi Penjualan</h2>
+            <div class="relative">
+                <button id="profileButton" class="flex items-center focus:outline-none">
+                    <svg class="w-8 h-8 text-green-600 rounded-full border-2 border-green-300 bg-green-50"
+                        fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 4a4 4 0 100 8 4 4 0 000-8zM12 14c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z" />
+                    </svg>
+                </button>
+                <div id="dropdown"
+                    class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg hidden z-10">
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="w-8 h-8 text-gray-700 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 4a4 4 0 100 8 4 4 0 000-8zM12 14c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z" />
+                            </svg>
+                            <div>
+                                <p class="font-semibold">Nama Pengguna</p>
+                                <p class="text-sm text-gray-500">Admin</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200"></div>
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profil</a>
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Pengaturan</a>
+                </div>
+            </div>
+        </div>
+
+        <main class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 px-3 sm:px-4 lg:px-5">
+
+            <div class="bg-white rounded-xl shadow-lg flex flex-col h-full col-span-1">
+                <div class="p-6 pb-2">
+                    <h2 class="text-2xl font-bold text-gray-800">Pilih Rumah</h2>
+                    <input type="text" id="search-input" placeholder="Cari rumah..."
+                        class="mt-4 p-2 w-full border border-gray-300 rounded-md">
+                </div>
+
+                <div id="rumah-list" class="p-6 pt-0 grid grid-cols-1 gap-4 overflow-y-auto flex-grow max-h-96">
+                </div>
+
+                <div class="p-6 border-t border-gray-200">
+                    <button id="btn-kirim-rumah"
+                        class="w-full py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300">
+                        Kirim Pilihan
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-lg col-span-2 flex flex-col h-full">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Tabel Transaksi</h2>
+
+                <div class="overflow-y-auto flex-grow">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-md">
+                        <thead>
+                            <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+                                <th class="py-3 px-6 text-left">No.</th>
+                                <th class="py-3 px-6 text-left">Gambar</th>
+                                <th class="py-3 px-6 text-left">Tipe Rumah</th>
+                                <th class="py-3 px-6 text-left">Detail Rumah</th>
+                                <th class="py-3 px-6 text-left">Harga</th>
+                                <th class="py-3 px-6 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transaksi-table-body" class="text-gray-600 text-sm font-light">
+                        </tbody>
+                        <tfoot class="bg-gray-200">
+                            <tr>
+                                <td colspan="4" class="py-3 px-6 text-left font-bold text-gray-800">Total Harga</td>
+                                <td id="total-harga" class="py-3 px-6 text-left font-bold text-gray-800">Rp 0</td>
+                                <td class="py-3 px-6 text-center"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="mt-6 p-4 bg-gray-50 rounded-lg shadow-inner">
+                    <h3 class="text-xl font-semibold mb-3">Status Pembayaran</h3>
+                    <div class="flex flex-col md:flex-row md:space-x-4 mb-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="payment-method" value="cash" checked
+                                class="form-radio text-green-600">
+                            <span class="ml-2">Cash</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="payment-method" value="softcash"
+                                class="form-radio text-yellow-600">
+                            <span class="ml-2">Soft Cash</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="payment-method" value="kpr" class="form-radio text-red-600">
+                            <span class="ml-2">KPR</span>
+                        </label>
+                    </div>
+
+                    <div id="payment-forms">
+                        <div id="form-cash" class="payment-form hidden">
+                            <div class="mb-4">
+                                <label for="input-cash" class="block text-sm font-medium text-gray-700">Jumlah
+                                    Pembayaran</label>
+                                <input type="number" id="input-cash"
+                                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                    placeholder="Masukkan jumlah penuh">
+                            </div>
+                        </div>
+
+                        <div id="form-softcash" class="payment-form hidden">
+                            <div class="mb-4">
+                                <label for="input-softcash" class="block text-sm font-medium text-gray-700">Jumlah
+                                    Angsuran</label>
+                                <input type="number" id="input-softcash"
+                                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                    placeholder="Masukkan jumlah angsuran">
+                            </div>
+                            <div class="mb-4">
+                                <label for="tenor-softcash" class="block text-sm font-medium text-gray-700">Tenor
+                                    (Bulan)</label>
+                                <input type="number" id="tenor-softcash"
+                                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                    placeholder="Masukkan tenor dalam bulan">
+                            </div>
+                        </div>
+
+                        <div id="form-kpr" class="payment-form hidden">
+                            <div class="mb-4">
+                                <label for="harga-rumah" class="block text-sm font-medium text-gray-700">Harga
+                                    Rumah</label>
+                                <input type="number" id="harga-rumah"
+                                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                    placeholder="Masukkan harga rumah">
+                            </div>
+                            <div class="mb-4">
+                                <label for="kredit-kpr" class="block text-sm font-medium text-gray-700">Kredit Disetujui
+                                    Bank</label>
+                                <input type="number" id="kredit-kpr"
+                                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                    placeholder="Masukkan kredit yang disetujui">
+                            </div>
+                            <div class="mb-4 p-3 bg-blue-100 border-l-4 border-blue-500 text-blue-700">
+                                <p>Total yang harus dibayarkan sekarang: <strong id="sisa-bayar">Rp 0</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="notification-area" class="mt-4 p-3 rounded-md hidden"></div>
+
+                    <button id="btn-kirim"
+                        class="w-full mt-4 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-300">
+                        Kirim Transaksi
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <div id="detail-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3 id="modal-title" class="text-xl font-bold mb-4">Detail Rumah</h3>
+                <img id="modal-image" src="" alt="Gambar Rumah" class="w-full h-full object-cover rounded-md mb-4">
+                <div id="modal-description" class="text-gray-700"></div>
+            </div>
+        </div>
+
+        <script>
+            // Data dummy untuk contoh
+            let rumahData = [{
+                    id: 1,
+                    nama: "Perumahan Indah Asri",
+                    tipe: "Tipe 36/72",
+                    detail: "Blok C2, Dekat Taman",
+                    harga: 500000000,
+                    gambar: "img/1.jpeg",
+                    deskripsi: "Rumah ini memiliki 2 kamar tidur, 1 kamar mandi, dan luas tanah 72m². Cocok untuk keluarga muda."
+                },
+                {
+                    id: 2,
+                    nama: "Cluster Griya Sejahtera",
+                    tipe: "Tipe 45/90",
+                    detail: "Blok A5, Hadap Utara",
+                    harga: 750000000,
+                    gambar: "img/3 (1).jpeg",
+                    deskripsi: "Rumah dengan 3 kamar tidur, 2 kamar mandi, dan taman yang luas. Berlokasi strategis dekat dengan pusat kota."
+                },
+                {
+                    id: 3,
+                    nama: "Permata Hijau Residence",
+                    tipe: "Tipe 60/120",
+                    detail: "Blok F8, Hook",
+                    harga: 1200000000,
+                    gambar: "img/3 (2).jpeg",
+                    deskripsi: "Rumah mewah 2 lantai dengan 4 kamar tidur, 3 kamar mandi, dan kolam renang pribadi. Lingkungan aman dan nyaman."
+                },
+                {
+                    id: 4,
+                    nama: "Griya Damai",
+                    tipe: "Tipe 36/60",
+                    detail: "Blok B3, Dekat Masjid",
+                    harga: 450000000,
+                    gambar: "img/4.jpeg",
+                    deskripsi: "Rumah minimalis dengan 2 kamar tidur dan 1 kamar mandi. Lingkungan yang tenang dan sejuk."
+                },
+                {
+                    id: 5,
+                    nama: "Nusa Indah Estate",
+                    tipe: "Tipe 50/100",
+                    detail: "Blok E1, Pemandangan Danau",
+                    harga: 900000000,
+                    gambar: "img/5.jpeg",
+                    deskripsi: "Rumah modern 2 lantai dengan pemandangan danau yang indah. Dapur modern dan ruang keluarga yang luas."
+                },
+            ];
+
+            let transaksiData = [{
+                id: 1,
+                gambar: rumahData[0].gambar,
+                tipe: rumahData[0].tipe,
+                detail: rumahData[0].detail,
+                harga: rumahData[0].harga,
+                deskripsi: rumahData[0].deskripsi
+            }];
+
+            // Fungsi untuk render daftar rumah sebagai radio button berdasarkan data yang difilter
+            function renderRumah(data) {
+                const container = document.getElementById('rumah-list');
+                container.innerHTML = '';
+                if (data.length === 0) {
+                    container.innerHTML = `<p class="text-center text-gray-500">Tidak ada rumah yang ditemukan.</p>`;
+                    return;
+                }
+                data.forEach(rumah => {
+                    const card = `
+                <label class="cursor-pointer">
+                    <input type="radio" name="selected-rumah" value="${rumah.id}" class="hidden peer">
+                    <div class="bg-gray-50 p-4 rounded-lg shadow-sm border border-transparent 
+                    hover:border-indigo-400 hover:bg-indigo-50 
+                    peer-checked:bg-indigo-100 peer-checked:border-indigo-500 
+                    transition-all duration-300">
+                        <img src="${rumah.gambar}" alt="Gambar rumah" class="w-full h-32 object-cover rounded-md mb-2">
+                        <h3 class="font-bold text-lg text-gray-800">${rumah.nama}</h3>
+                        <p class="text-sm text-gray-600 mt-1">${rumah.tipe}</p>
+                    </div>
+                </label>
+            `;
+                    container.innerHTML += card;
+                });
+            }
+
+            // Fungsi untuk render tabel transaksi
+            function renderTransaksi() {
+                const tableBody = document.getElementById('transaksi-table-body');
+                const totalHargaEl = document.getElementById('total-harga');
+                tableBody.innerHTML = '';
+
+                if (transaksiData.length === 0) {
+                    tableBody.innerHTML =
+                        `<tr><td colspan="6" class="text-center py-4 text-gray-500">Belum ada transaksi</td></tr>`;
+                    totalHargaEl.textContent = 'Rp 0';
+                    return;
+                }
+
+                let totalHarga = 0;
+                transaksiData.forEach((transaksi, index) => {
+                    totalHarga += transaksi.harga;
+                    const row = `
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">${index + 1}</td>
+                    <td class="py-3 px-6 text-left">
+                        <img src="${transaksi.gambar}" class="w-12 h-12 object-cover rounded-md">
+                    </td>
+                    <td class="py-3 px-6 text-left">${transaksi.tipe}</td>
+                    <td class="py-3 px-6 text-left">${transaksi.detail}</td>
+                    <td class="py-3 px-6 text-left">Rp ${transaksi.harga.toLocaleString('id-ID')}</td>
+                    <td class="py-3 px-6 text-center">
+                        <div class="flex item-center justify-center space-x-2">
+                            <button onclick="deleteTransaksi(${index})" class="w-6 h-6 text-red-500 hover:text-red-700 transition duration-300" title="Hapus">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                            <button onclick="showDetailModal(${transaksi.id})" class="w-6 h-6 text-blue-500 hover:text-blue-700 transition duration-300" title="Detail">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+                    tableBody.innerHTML += row;
+                });
+                totalHargaEl.textContent = `Rp ${totalHarga.toLocaleString('id-ID')}`;
+            }
+
+            // Fungsi untuk menghapus transaksi
+            function deleteTransaksi(index) {
+                transaksiData.splice(index, 1);
+                renderTransaksi();
+                showNotification('Transaksi berhasil dihapus.', 'bg-red-500');
+            }
+
+            // Fungsi untuk menampilkan modal detail
+            function showDetailModal(id) {
+                // Mencari data rumah berdasarkan ID
+                const item = rumahData.find(r => r.id === id);
+                if (!item) return;
+
+                // Mengisi konten modal dengan data yang ditemukan
+                document.getElementById('modal-title').textContent = item.nama;
+                document.getElementById('modal-image').src = item.gambar;
+                document.getElementById('modal-description').innerHTML = `
+        <p class="mb-2"><strong>Tipe:</strong> ${item.tipe}</p>
+        <p class="mb-2"><strong>Detail:</strong> ${item.detail}</p>
+        <p class="mb-2"><strong>Harga:</strong> Rp ${item.harga.toLocaleString('id-ID')}</p>
+        <p class="mt-4">${item.deskripsi}</p>
+    `;
+
+                // Menampilkan modal
+                document.getElementById('detail-modal').style.display = 'flex';
+            }
+
+            // Menutup modal
+            document.querySelector('#detail-modal .close-button').addEventListener('click', () => {
+                document.getElementById('detail-modal').style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target == document.getElementById('detail-modal')) {
+                    document.getElementById('detail-modal').style.display = 'none';
+                }
+            });
+
+
+            // Fungsi untuk menampilkan form pembayaran yang sesuai
+            function showPaymentForm(method) {
+                document.querySelectorAll('.payment-form').forEach(form => {
+                    form.classList.add('hidden');
+                });
+                document.getElementById(`form-${method}`).classList.remove('hidden');
+            }
+
+            // Fungsi untuk menghitung sisa bayar KPR
+            function calculateSisaBayar() {
+                const hargaRumah = parseFloat(document.getElementById('harga-rumah').value) || 0;
+                const kreditKpr = parseFloat(document.getElementById('kredit-kpr').value) || 0;
+                const sisaBayar = hargaRumah - kreditKpr;
+                document.getElementById('sisa-bayar').textContent = `Rp ${sisaBayar.toLocaleString('id-ID')}`;
+            }
+
+            // Fungsi untuk menampilkan notifikasi
+            function showNotification(message, colorClass) {
+                const notification = document.getElementById('notification-area');
+                notification.textContent = message;
+                notification.className = `mt-4 p-3 rounded-md text-white ${colorClass}`;
+                notification.classList.remove('hidden');
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                }, 3000);
+            }
+
+            // Event listener untuk tombol "Kirim" baru di kolom kiri
+            document.getElementById('btn-kirim-rumah').addEventListener('click', () => {
+                const selectedId = document.querySelector('input[name="selected-rumah"]:checked') ?.value;
+                if (!selectedId) {
+                    showNotification('Silakan pilih salah satu rumah terlebih dahulu!', 'bg-yellow-500');
+                    return;
+                }
+
+                // Temukan data rumah yang dipilih
+                const selectedRumah = rumahData.find(rumah => rumah.id == selectedId);
+
+                // Kosongkan tabel transaksi dan tambahkan data rumah yang dipilih
+                transaksiData = [];
+                transaksiData.push({
+                    id: transaksiData.length + 1,
+                    gambar: selectedRumah.gambar,
+                    tipe: selectedRumah.tipe,
+                    detail: selectedRumah.detail,
+                    harga: selectedRumah.harga,
+                    deskripsi: selectedRumah.deskripsi,
+                });
+                renderTransaksi();
+                showNotification(`Rumah ${selectedRumah.nama} berhasil ditambahkan ke tabel.`, 'bg-green-500');
+            });
+
+            // Event listener untuk input pencarian
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredRumah = rumahData.filter(rumah => {
+                    return (
+                        rumah.nama.toLowerCase().includes(searchTerm) ||
+                        rumah.tipe.toLowerCase().includes(searchTerm) ||
+                        rumah.detail.toLowerCase().includes(searchTerm)
+                    );
+                });
+                renderRumah(filteredRumah);
+            });
+
+
+            // Event Listeners lainnya
+            document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    showPaymentForm(e.target.value);
+                });
+            });
+
+            document.getElementById('harga-rumah').addEventListener('input', calculateSisaBayar);
+            document.getElementById('kredit-kpr').addEventListener('input', calculateSisaBayar);
+
+            document.getElementById('btn-kirim').addEventListener('click', () => {
+                // Logika tambahan untuk menangani input dari form pembayaran
+                const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+                let paymentDetails = {};
+                if (paymentMethod === 'cash') {
+                    paymentDetails.amount = document.getElementById('input-cash').value;
+                } else if (paymentMethod === 'softcash') {
+                    paymentDetails.amount = document.getElementById('input-softcash').value;
+                    paymentDetails.tenor = document.getElementById('tenor-softcash').value;
+                } else if (paymentMethod === 'kpr') {
+                    paymentDetails.hargaRumah = document.getElementById('harga-rumah').value;
+                    paymentDetails.kredit = document.getElementById('kredit-kpr').value;
+                }
+
+                showNotification('Data pembayaran berhasil disimpan.', 'bg-blue-500');
+            });
+
+            // Inisialisasi tampilan saat halaman dimuat
+            document.addEventListener('DOMContentLoaded', () => {
+                renderRumah(rumahData);
+                renderTransaksi();
+                showPaymentForm('cash');
+            });
+        </script>
+
+        <script>
+            function hitungPembayaran() {
+                const status = document.getElementById("statusPembayaran").value;
+                const hasil = document.getElementById("hasilPembayaran");
+                const harga = 350000000; // contoh harga rumah
+
+                if (status === "cash") {
+                    hasil.innerHTML = `Total yang harus dibayar: Rp ${harga.toLocaleString()}`;
+                } else if (status === "softcash") {
+                    let angsuran = harga / 12;
+                    hasil.innerHTML = `Pembayaran angsuran per bulan: Rp ${angsuran.toLocaleString()}`;
+                } else if (status === "kpr") {
+                    let dp = harga * 0.3;
+                    let cicilan = (harga - dp) / 120;
+                    hasil.innerHTML = `
+                        DP: Rp ${dp.toLocaleString()}<br>
+                        Cicilan per bulan (10 tahun): Rp ${cicilan.toLocaleString()}
+                    `;
+                }
+            }
+        </script>
+
+
+    </div>
+
+    <script>
+        // Dropdown
+        const profileButton = document.getElementById('profileButton');
+        const dropdown = document.getElementById('dropdown');
+        profileButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Mencegah klik menyebar ke window
+            dropdown.classList.toggle('hidden');
+        });
+        window.addEventListener('click', (e) => {
+            if (!profileButton.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        // Sidebar mobile
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.querySelector('.main-content');
+        const backdrop = document.getElementById('backdrop');
+
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+            backdrop.classList.toggle('opacity-0');
+            backdrop.classList.toggle('opacity-50');
+            backdrop.classList.toggle('pointer-events-none');
+        });
+
+        backdrop.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            backdrop.classList.add('opacity-0');
+            backdrop.classList.remove('opacity-50');
+            backdrop.classList.add('pointer-events-none');
+        });
+    </script>
+</body>
+
+</html>

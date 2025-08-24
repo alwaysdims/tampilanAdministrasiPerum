@@ -1,0 +1,704 @@
+    <!doctype html>
+    <html lang="id">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./output.css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <title>Administrasi Perum</title>
+        <style>
+            .status-badge {
+                padding: 0.25rem 0.5rem;
+                border-radius: 9999px;
+                font-size: 0.75rem;
+                font-weight: 500;
+            }
+
+            .modal-open {
+                overflow: hidden;
+            }
+
+            .modal {
+                transition: opacity 0.2s ease-in-out;
+            }
+
+            .modal.show {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        </style>
+    </head>
+
+    <body class="bg-gray-100 font-sans antialiased">
+
+        <div id="sidebar"
+            class="bg-gradient-to-b from-green-50 to-emerald-100 text-gray-800 w-64 fixed top-0 left-0 h-screen flex flex-col shadow-lg transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0 z-50">
+
+            <div class="flex items-center px-4 py-5 border-b border-green-200">
+                <div class="bg-white p-1 rounded-full shadow-sm mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-600" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h6m8-11v10a1 1 0 01-1 1h-6" />
+                    </svg>
+                </div>
+                <h1 class="text-xl font-bold text-green-800">Administrasi Perum</h1>
+            </div>
+
+            <nav class="mt-6 flex-1 space-y-2 overflow-y-auto">
+                <a href="dashboard.html"
+                    class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 text-gray-700 hover:bg-green-200 hover:text-green-700 transition group">
+                    <svg class="w-5 h-5 text-green-600 group-hover:text-green-700" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l9-9 9 9v9a2 2 0 01-2 2H5a2 2 0 01-2-2v-9z"></path>
+                    </svg>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+
+                <a href="penjualan.html"
+                    class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 bg-green-500 text-white font-semibold hover:bg-green-600 transition group">
+                    <svg class="w-5 h-5 text-white group-hover:text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2a3 3 0 01-3-2c0-1.105 1.343-2 3-2zM12 8V7a2 2 0 012-2h4a2 2 0 012 2v10a2 2 0 01-2 2H8a2 2 0 01-2-2v-3.5">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v-2m-2 0h-2">
+                        </path>
+                    </svg>
+                    <span class="font-medium">Penjualan</span>
+                </a>
+
+                <!-- <a href="pengeluaran.html"
+                    class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 text-gray-700 hover:bg-green-200 hover:text-green-700 transition group">
+                    <svg class="w-5 h-5 text-red-600 group-hover:text-red-700" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="font-medium">Pengeluaran</span>
+                </a> -->
+
+                <a href="laporan.html"
+                    class="flex items-center space-x-3 py-3 px-4 rounded-xl mx-2 text-gray-700 hover:bg-green-200 hover:text-green-700 transition group">
+                    <svg class="w-5 h-5 text-green-600 group-hover:text-green-700" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                        </path>
+                    </svg>
+                    <span class="font-medium">Laporan</span>
+                </a>
+
+            </nav>
+
+            <div class="p-4 border-t border-green-200">
+                <a href="#">
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-green-100 p-2 rounded-full">
+                            <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                                </path>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium text-green-700">Logout</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div id="backdrop"
+            class="fixed inset-0 bg-black opacity-0 transition-opacity duration-300 ease-in-out z-40 md:hidden pointer-events-none">
+        </div>
+
+        <div class="flex-1 md:ml-64 transition-all duration-300 ease-in-out">
+            <div
+                class="bg-white shadow-md p-4 md:p-6 flex justify-between items-center sticky top-0 z-40 rounded-xl m-4 md:m-6">
+                <button id="hamburger" class="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7">
+                        </path>
+                    </svg>
+                </button>
+                <h2 class="text-xl font-semibold flex-1 text-center md:text-left text-gray-800">Penjualan</h2>
+                <div class="relative">
+                    <button id="profileButton" class="flex items-center focus:outline-none">
+                        <svg class="w-8 h-8 text-green-600 rounded-full border-2 border-green-300 bg-green-50"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 4a4 4 0 100 8 4 4 0 000-8zM12 14c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z" />
+                        </svg>
+                    </button>
+                    <div id="dropdown"
+                        class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg hidden z-10">
+                        <div class="p-4">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-8 h-8 text-gray-700 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 4a4 4 0 100 8 4 4 0 000-8zM12 14c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z" />
+                                </svg>
+                                <div>
+                                    <p class="font-semibold">Nama Pengguna</p>
+                                    <p class="text-sm text-gray-500">Admin</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-200"></div>
+                        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profil</a>
+                        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Pengaturan</a>
+                    </div>
+                </div>
+            </div>
+            <main class="overflow-y-auto p-4 md:p-6">
+                <div class="mb-6">
+                    <h1 class="text-2xl md:text-3xl text-center font-bold text-gray-800 mb-4">Data Penjualan Perumahan</h1>
+
+                    <div class="bg-white rounded-lg shadow-sm p-4 md:p-6 mb-6">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                            <div class="flex-1">
+                                <div class="relative">
+                                    <input type="text" id="searchInput"
+                                        placeholder="Cari kode penjualan atau type rumah..."
+                                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <i
+                                        class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2">
+                                <select id="statusFilter"
+                                    class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Semua Status</option>
+                                    <option value="Lunas">Lunas</option>
+                                    <option value="Belum Lunas">Belum Lunas</option>
+                                </select>
+
+                                <select id="methodFilter"
+                                    class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Semua Metode</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Soft Cash">Soft Cash</option>
+                                    <option value="KPR">KPR</option>
+                                </select>
+
+                                <a href="transaksi.html"
+                                    class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+                                    <i class="fas fa-plus"></i>
+                                    Input Baru
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        No</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Kode Penjualan</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Type Rumah</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Metode Pembayaran</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Status</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="salesTableBody" class="bg-white divide-y divide-gray-200">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="pagination" class="mt-6 flex justify-between items-center flex-wrap gap-4">
+                    <div id="pageInfo" class="text-sm text-gray-700"></div>
+                    <div id="pageButtons" class="flex gap-2"></div>
+                </div>
+            </main>
+
+            <!-- <div id="inputModal"
+                class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 opacity-0 pointer-events-none z-50">
+                <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-2xl">
+                    <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-800">Input Data Penjualan Baru</h3>
+                        <button onclick="closeModal('inputModal')" class="text-gray-400 hover:text-gray-600">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="px-6 py-4">
+                        <form id="inputForm" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Kode Penjualan</label>
+                                    <input type="text" id="inputKode"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Type Rumah</label>
+                                    <select id="inputType"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                        <option value="">Pilih Type</option>
+                                        <option value="Type 36">Type 36</option>
+                                        <option value="Type 45">Type 45</option>
+                                        <option value="Type 60">Type 60</option>
+                                        <option value="Type 72">Type 72</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Metode
+                                        Pembayaran</label>
+                                    <select id="inputMetode"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                        <option value="">Pilih Metode</option>
+                                        <option value="Cash">Cash</option>
+                                        <option value="Soft Cash">Soft Cash</option>
+                                        <option value="KPR">KPR</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                                    <select id="inputStatus"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                        <option value="">Pilih Status</option>
+                                        <option value="Lunas">Lunas</option>
+                                        <option value="Belum Lunas">Belum Lunas</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Keterangan</label>
+                                <textarea rows="3" id="inputKeterangan"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="px-6 py-4 border-t border-gray-200 flex justify-end gap-3">
+                        <button onclick="closeModal('inputModal')"
+                            class="px-4 py-2 text-gray-600 hover:text-gray-800">Batal</button>
+                        <button id="saveButton"
+                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Simpan</button>
+                    </div>
+                </div>
+            </div> -->
+
+            <div id="detailModal"
+                class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 opacity-0 pointer-events-none z-50">
+                <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-2xl">
+                    <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-800">Detail Penjualan</h3>
+                        <button onclick="closeModal('detailModal')" class="text-gray-400 hover:text-gray-600">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="detailContent" class="px-6 py-4">
+                    </div>
+                    <div class="px-6 py-4 border-t border-gray-200 flex justify-end">
+                        <button onclick="closeModal('detailModal')"
+                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Tutup</button>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // Data dummy untuk simulasi
+                let salesData = [{
+                        id: 1,
+                        kode: '#12387328',
+                        type: 'Type 36',
+                        metode: 'Cash',
+                        status: 'Lunas',
+                        keterangan: 'Pembayaran tunai lunas di awal.'
+                    },
+                    {
+                        id: 2,
+                        kode: '#12387329',
+                        type: 'Type 45',
+                        metode: 'Soft Cash',
+                        status: 'Belum Lunas',
+                        keterangan: 'Cicilan 12x, sisa 5x.'
+                    },
+                    {
+                        id: 3,
+                        kode: '#12387330',
+                        type: 'Type 60',
+                        metode: 'KPR',
+                        status: 'Lunas',
+                        keterangan: 'Sudah akad kredit dengan bank.'
+                    },
+                    {
+                        id: 4,
+                        kode: '#12387331',
+                        type: 'Type 36',
+                        metode: 'Soft Cash',
+                        status: 'Belum Lunas',
+                        keterangan: 'Cicilan 24x, sisa 18x.'
+                    },
+                    {
+                        id: 5,
+                        kode: '#12387332',
+                        type: 'Type 72',
+                        metode: 'Cash',
+                        status: 'Lunas',
+                        keterangan: 'Pembayaran tunai lunas.'
+                    },
+                    {
+                        id: 6,
+                        kode: '#12387333',
+                        type: 'Type 45',
+                        metode: 'KPR',
+                        status: 'Belum Lunas',
+                        keterangan: 'Proses verifikasi bank.'
+                    },
+                    {
+                        id: 7,
+                        kode: '#12387334',
+                        type: 'Type 60',
+                        metode: 'Cash',
+                        status: 'Lunas',
+                        keterangan: 'Sudah serah terima kunci.'
+                    },
+                    {
+                        id: 8,
+                        kode: '#12387335',
+                        type: 'Type 36',
+                        metode: 'Soft Cash',
+                        status: 'Belum Lunas',
+                        keterangan: 'Baru masuk DP.'
+                    },
+                    {
+                        id: 9,
+                        kode: '#12387336',
+                        type: 'Type 72',
+                        metode: 'KPR',
+                        status: 'Belum Lunas',
+                        keterangan: 'Sedang menunggu persetujuan.'
+                    },
+                    {
+                        id: 10,
+                        kode: '#12387337',
+                        type: 'Type 36',
+                        metode: 'Cash',
+                        status: 'Lunas',
+                        keterangan: 'Pelunasan sudah diterima.'
+                    },
+                    {
+                        id: 11,
+                        kode: '#12387338',
+                        type: 'Type 45',
+                        metode: 'Soft Cash',
+                        status: 'Lunas',
+                        keterangan: 'Cicilan sudah lunas.'
+                    },
+                    {
+                        id: 12,
+                        kode: '#12387339',
+                        type: 'Type 60',
+                        metode: 'KPR',
+                        status: 'Lunas',
+                        keterangan: 'Sudah lunas di bank.'
+                    },
+                    {
+                        id: 13,
+                        kode: '#12387340',
+                        type: 'Type 36',
+                        metode: 'Cash',
+                        status: 'Lunas',
+                        keterangan: 'Pembayaran 100%.'
+                    },
+                    {
+                        id: 14,
+                        kode: '#12387341',
+                        type: 'Type 45',
+                        metode: 'Soft Cash',
+                        status: 'Belum Lunas',
+                        keterangan: 'Sisa 2x cicilan.'
+                    },
+                    {
+                        id: 15,
+                        kode: '#12387342',
+                        type: 'Type 72',
+                        metode: 'KPR',
+                        status: 'Belum Lunas',
+                        keterangan: 'Dokumen sedang diproses.'
+                    }
+                ];
+
+                // Konfigurasi Pagination
+                const itemsPerPage = 5;
+                let currentPage = 1;
+
+                // Elemen DOM
+                const tableBody = document.getElementById('salesTableBody');
+                const searchInput = document.getElementById('searchInput');
+                const statusFilter = document.getElementById('statusFilter');
+                const methodFilter = document.getElementById('methodFilter');
+                const pageInfo = document.getElementById('pageInfo');
+                const pageButtons = document.getElementById('pageButtons');
+
+                const inputModal = document.getElementById('inputModal');
+                const detailModal = document.getElementById('detailModal');
+
+                // Fungsi untuk menampilkan data ke tabel
+                function renderTable(data, page) {
+                    tableBody.innerHTML = ''; // Kosongkan tabel
+                    const start = (page - 1) * itemsPerPage;
+                    const end = start + itemsPerPage;
+                    const paginatedData = data.slice(start, end);
+
+                    paginatedData.forEach((sale, index) => {
+                        const row = document.createElement('tr');
+                        row.className = 'hover:bg-gray-50 transition duration-150';
+
+                        const statusClass = sale.status === 'Lunas' ? 'bg-green-100 text-green-800' :
+                            'bg-yellow-100 text-yellow-800';
+                        const methodClass = sale.metode === 'Cash' ? 'bg-blue-100 text-blue-800' : (sale
+                            .metode ===
+                            'Soft Cash' ? 'bg-purple-100 text-purple-800' : 'bg-green-100 text-green-800');
+
+                        row.innerHTML = `
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${start + index + 1}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">${sale.kode}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${sale.type}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+          <span class="status-badge ${methodClass}">${sale.metode}</span>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+          <span class="status-badge ${statusClass}">${sale.status}</span>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm">
+          <button onclick="showDetail(${sale.id})"
+          class="text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-colors">
+          <i class="fas fa-eye"></i>
+          Cek Detail
+          </button>
+          </td>
+          `;
+                        tableBody.appendChild(row);
+                    });
+
+                    renderPagination(data.length);
+                }
+
+                // Fungsi untuk membuat dan mengelola tombol pagination
+                function renderPagination(totalItems) {
+                    const totalPages = Math.ceil(totalItems / itemsPerPage);
+                    pageButtons.innerHTML = '';
+
+                    // Tombol 'Sebelumnya'
+                    const prevButton = document.createElement('button');
+                    prevButton.textContent = 'Sebelumnya';
+                    prevButton.className =
+                        'px-3 py-1 border border-gray-300 rounded-md text-sm hover:bg-gray-50 transition-colors';
+                    if (currentPage === 1) prevButton.disabled = true;
+                    prevButton.onclick = () => {
+                        if (currentPage > 1) {
+                            currentPage--;
+                            applyFiltersAndRender();
+                        }
+                    };
+                    pageButtons.appendChild(prevButton);
+
+                    // Tombol halaman
+                    for (let i = 1; i <= totalPages; i++) {
+                        const button = document.createElement('button');
+                        button.textContent = i;
+                        button.className =
+                            `px-3 py-1 border border-gray-300 rounded-md text-sm transition-colors ${i === currentPage ? 'bg-blue-600 text-white' : 'hover:bg-gray-50'}`;
+                        button.onclick = () => {
+                            currentPage = i;
+                            applyFiltersAndRender();
+                        };
+                        pageButtons.appendChild(button);
+                    }
+
+                    // Tombol 'Selanjutnya'
+                    const nextButton = document.createElement('button');
+                    nextButton.textContent = 'Selanjutnya';
+                    nextButton.className =
+                        'px-3 py-1 border border-gray-300 rounded-md text-sm hover:bg-gray-50 transition-colors';
+                    if (currentPage === totalPages) nextButton.disabled = true;
+                    nextButton.onclick = () => {
+                        if (currentPage < totalPages) {
+                            currentPage++;
+                            applyFiltersAndRender();
+                        }
+                    };
+                    pageButtons.appendChild(nextButton);
+
+                    // Informasi halaman
+                    const start = (currentPage - 1) * itemsPerPage + 1;
+                    const end = Math.min(start + itemsPerPage - 1, totalItems);
+                    pageInfo.textContent = `Menampilkan ${start}-${end} dari ${totalItems} data`;
+                }
+
+                // Fungsi utama untuk menerapkan filter dan merender ulang tabel
+                function applyFiltersAndRender() {
+                    const searchTerm = searchInput.value.toLowerCase();
+                    const selectedStatus = statusFilter.value;
+                    const selectedMethod = methodFilter.value;
+
+                    const filteredData = salesData.filter(sale => {
+                        const matchesSearch = sale.kode.toLowerCase().includes(searchTerm) || sale.type
+                            .toLowerCase()
+                            .includes(searchTerm);
+                        const matchesStatus = !selectedStatus || sale.status === selectedStatus;
+                        const matchesMethod = !selectedMethod || sale.metode === selectedMethod;
+                        return matchesSearch && matchesStatus && matchesMethod;
+                    });
+
+                    renderTable(filteredData, currentPage);
+                }
+
+                // Event listener untuk filter
+                searchInput.addEventListener('keyup', () => {
+                    currentPage = 1; // Reset halaman ke 1 setiap kali filter berubah
+                    applyFiltersAndRender();
+                });
+                statusFilter.addEventListener('change', () => {
+                    currentPage = 1;
+                    applyFiltersAndRender();
+                });
+                methodFilter.addEventListener('change', () => {
+                    currentPage = 1;
+                    applyFiltersAndRender();
+                });
+
+                // Fungsi Modal
+                function openModal(modalId) {
+                    document.getElementById(modalId).classList.add('show');
+                    document.body.classList.add('modal-open');
+                }
+
+                function closeModal(modalId) {
+                    document.getElementById(modalId).classList.remove('show');
+                    document.body.classList.remove('modal-open');
+                }
+
+                // Fungsi untuk menampilkan detail
+                function showDetail(id) {
+                    const sale = salesData.find(s => s.id === id);
+                    if (sale) {
+                        const detailContent = document.getElementById('detailContent');
+                        const statusClass = sale.status === 'Lunas' ? 'bg-green-100 text-green-800' :
+                            'bg-yellow-100 text-yellow-800';
+
+                        detailContent.innerHTML = `
+          <div class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+          <label class="block text-sm font-medium text-gray-700">Kode Penjualan</label>
+          <p class="text-lg font-semibold text-blue-600">${sale.kode}</p>
+          </div>
+          <div>
+          <label class="block text-sm font-medium text-gray-700">Type Rumah</label>
+          <p class="text-lg">${sale.type}</p>
+          </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+          <label class="block text-sm font-medium text-gray-700">Metode Pembayaran</label>
+          <p class="text-lg">${sale.metode}</p>
+          </div>
+          <div>
+          <label class="block text-sm font-medium text-gray-700">Status</label>
+          <span class="status-badge ${statusClass}">${sale.status}</span>
+          </div>
+          </div>
+          <div>
+          <label class="block text-sm font-medium text-gray-700">Keterangan</label>
+          <p class="text-lg">${sale.keterangan}</p>
+          </div>
+          </div>
+          `;
+                        openModal('detailModal');
+                    }
+                }
+
+                // Inisialisasi tampilan awal
+                document.addEventListener('DOMContentLoaded', () => {
+                    applyFiltersAndRender();
+                });
+
+                // Tambahkan event listener untuk tombol Simpan
+                document.getElementById('saveButton').addEventListener('click', () => {
+                    const newSale = {
+                        id: salesData.length + 1,
+                        kode: document.getElementById('inputKode').value ||
+                            `#${Math.floor(Math.random() * 1000000)}`,
+                        type: document.getElementById('inputType').value,
+                        metode: document.getElementById('inputMetode').value,
+                        status: document.getElementById('inputStatus').value,
+                        keterangan: document.getElementById('inputKeterangan').value,
+                    };
+
+                    if (newSale.type && newSale.metode && newSale.status) {
+                        salesData.push(newSale);
+                        closeModal('inputModal');
+                        applyFiltersAndRender();
+                        // Reset form
+                        document.getElementById('inputForm').reset();
+                    } else {
+                        alert('Mohon lengkapi semua data penjualan.');
+                    }
+                });
+            </script>
+
+        </div>
+
+        <script>
+            // Dropdown
+            const profileButton = document.getElementById('profileButton');
+            const dropdown = document.getElementById('dropdown');
+            profileButton.addEventListener('click', (event) => {
+                event.stopPropagation(); // Mencegah klik menyebar ke window
+                dropdown.classList.toggle('hidden');
+            });
+            window.addEventListener('click', (e) => {
+                if (!profileButton.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            });
+
+            // Sidebar mobile
+            const hamburger = document.getElementById('hamburger');
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.querySelector('.main-content');
+            const backdrop = document.getElementById('backdrop');
+
+            hamburger.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+                backdrop.classList.toggle('opacity-0');
+                backdrop.classList.toggle('opacity-50');
+                backdrop.classList.toggle('pointer-events-none');
+            });
+
+            backdrop.addEventListener('click', () => {
+                sidebar.classList.add('-translate-x-full');
+                backdrop.classList.add('opacity-0');
+                backdrop.classList.remove('opacity-50');
+                backdrop.classList.add('pointer-events-none');
+            });
+        </script>
+    </body>
+
+    </html>
