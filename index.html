@@ -4,21 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./output.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Gaya tambahan untuk transisi yang lebih halus, opsional */
+        .transition-all {
+            transition-property: all;
+            transition-duration: 300ms;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div class="min-h-screen bg-gray-100 flex items-center justify-center p-4 sm:p-6">
 
-        <!-- From Uiverse.io by mobinkakei -->
-        <div class="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+        <div class="relative flex w-full max-w-sm sm:w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+            
             <div
                 class="relative mx-4 -mt-6 mb-4 grid h-28 place-items-center overflow-hidden rounded-xl bg-gradient-to-tr from-green-600 to-green-400 bg-clip-border text-white shadow-lg shadow-green-500/40">
                 <h3 class="block font-sans text-3xl font-semibold leading-snug tracking-normal text-white antialiased">
                     Sign In
                 </h3>
             </div>
+            
             <div class="flex flex-col gap-4 p-6">
                 <div class="relative h-11 w-full min-w-[200px]">
                     <input placeholder=""
@@ -36,20 +43,15 @@
                         Password
                     </label>
                 </div>
-
             </div>
+
             <div class="p-6 pt-0">
-                <a href="dashboard.html" class="btn block w-full select-none rounded-lg bg-gradient-to-tr from-green-600 to-green-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                <a href="dashboard.html"
+                    class="btn block w-full select-none rounded-lg bg-gradient-to-tr from-green-600 to-green-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                     login
                 </a>
-          
-
             </div>
         </div>
-
-
     </div>
-
 </body>
-
 </html>
